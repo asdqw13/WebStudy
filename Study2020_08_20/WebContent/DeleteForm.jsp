@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,10 +18,8 @@
 				<td><input type="password" name="password"></td>
 			</tr>
 			<tr>
-				<td colspan="2">
-					<input type="submit" value="삭제">
-					<input type="reset" value="취소">
-				</td>
+				<td colspan="2"><input type="submit" value="삭제"> <input
+					type="reset" value="취소"></td>
 			</tr>
 		</table>
 	</form>
