@@ -26,12 +26,10 @@
 				<td><input type="email" name="email"></td>
 			</tr>
 			<tr>
-				<td colspan="4">
-					<input type="submit" value="수정">
-					<input type="reset" value="취소">
-					<input type="button" value="삭제" onclick="location.href='Delete.jsp'">
-					<input type="button" value="목록보기" onclick="location.href='Select.jsp'">
-				</td>
+				<td colspan="4"><input type="submit" value="수정"> <input
+					type="reset" value="취소"> <input type="button" value="삭제"
+					onclick="location.href='Delete.jsp'"> <input type="button"
+					value="목록보기" onclick="location.href='Select.jsp'"></td>
 			</tr>
 		</table>
 	</form>

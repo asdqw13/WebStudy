@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>InsertForm</title>
+<title>Select</title>
 </head>
 <body>
 	<h1>가입회원 명단</h1>
@@ -38,7 +38,7 @@
 		while (rs.next()) {
 		%>
 		<tr>
-			<td><a href="Modify.jsp"><%=rs.getString(1)%></a></td>
+			<td><a href="UpdateForm.jsp"><%=rs.getString(1)%></a></td>
 			<td><%=rs.getString(2)%></td>
 			<td><%=rs.getString(3)%></td>
 			<td><%=rs.getString(4)%></td>
