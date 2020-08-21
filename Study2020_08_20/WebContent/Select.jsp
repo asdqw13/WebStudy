@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*"%>
+<%@ page import="xx.JDB"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,18 +24,22 @@
 			<th>이메일</th>
 		</tr>
 		<%
-			String driver = "oracle.jdbc.OracleDriver";
+ 		/*	String driver = "oracle.jdbc.OracleDriver";
 			String url = "jdbc:oracle:thin:@localhost:1521:xe";
 			String user = "system";
-			String pwd = "123456";
+			String pwd = "123456"; */
 			String sql = "select * from member";
 		
 			Connection conn = null;
 			Statement stmt = null;
 			ResultSet rs = null;
 
-			Class.forName(driver); // 외부의 저장 된 class파일을 현재 페이지로 가져옴.
-			conn = DriverManager.getConnection(url, user, pwd);
+		/*	Class.forName(driver); // 외부의 저장 된 class파일을 현재 페이지로 가져옴.
+			conn = DriverManager.getConnection(url, user, pwd); */
+			
+			JDB db = JDB.getDB();
+			conn = db.conn;
+			
 			stmt = conn.createStatement(); // 빈 문장통.
 			rs = stmt.executeQuery(sql); // executeQuery(sql) --> select from
 			
