@@ -23,22 +23,25 @@
 		</tr>
 		<%
 			String driver = "oracle.jdbc.OracleDriver";
-		String url = "jdbc:oracle:thin:@localhost:1521:xe";
-		String user = "system";
-		String pwd = "123456";
-		String sql = "select * from member";
-		Connection conn = null;
-		Statement stmt = null;
-		ResultSet rs = null;
+			String url = "jdbc:oracle:thin:@localhost:1521:xe";
+			String user = "system";
+			String pwd = "123456";
+			String sql = "select * from member";
+		
+			Connection conn = null;
+			Statement stmt = null;
+			ResultSet rs = null;
 
-		Class.forName(driver); // 외부의 저장 된 class파일을 현재 페이지로 가져옴.
-		conn = DriverManager.getConnection(url, user, pwd);
-		stmt = conn.createStatement(); // 빈 문장통.
-		rs = stmt.executeQuery(sql); // executeQuery(sql) --> select from
-		while (rs.next()) {
+			Class.forName(driver); // 외부의 저장 된 class파일을 현재 페이지로 가져옴.
+			conn = DriverManager.getConnection(url, user, pwd);
+			stmt = conn.createStatement(); // 빈 문장통.
+			rs = stmt.executeQuery(sql); // executeQuery(sql) --> select from
+			
+			while (rs.next())
+			{
 		%>
 		<tr>
-			<td><a href="UpdateForm.jsp"><%=rs.getString(1)%></a></td>
+			<td><a href="UpdateForm.jsp?memberid=<%=rs.getString(1)%>"><%=rs.getString(1)%></a></td>
 			<td><%=rs.getString(2)%></td>
 			<td><%=rs.getString(3)%></td>
 			<td><%=rs.getString(4)%></td>
@@ -47,5 +50,16 @@
 			}
 		%>
 	</table>
+	<form action="Find.jsp" method="get">
+		<select name="key">
+			<option value="memberid">아이디</option>
+			<option value="password">비밀번호</option>
+			<option value="name">이름</option>
+			<option value="email">이메일</option>
+		</select>
+		<input type="text" name="word">
+		<input type="submit"value="검색">
+		<input type="reset" value="취소">
+	</form>
 </body>
 </html>

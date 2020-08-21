@@ -7,11 +7,14 @@
 <title>DeleteForm</title>
 </head>
 <body>
+<%
+	String memberid = request.getParameter("memberid");
+%>
 	<form action="Delete.jsp" method="get">
 		<table border="1">
 			<tr>
 				<td>아이디</td>
-				<td><input type="text" name="memberid"></td>
+				<td><input type="text" name="memberid" value="<%=memberid%>"></td>
 			</tr>
 			<tr>
 				<td>비밀번호</td>

@@ -7,11 +7,15 @@
 <title>UpdateForm</title>
 </head>
 <body>
+<%
+	String memberid = request.getParameter("memberid");
+	System.out.print(memberid);
+%>
 	<form action="Update.jsp" method="get">
 		<table border="1">
 			<tr>
 				<td>아이디</td>
-				<td><input type="text" name="memberid"></td>
+				<td><input type="text" name="memberid" value=<%=memberid%>></td>
 			</tr>
 			<tr>
 				<td>비밀번호</td>
@@ -25,13 +29,11 @@
 				<td>이메일</td>
 				<td><input type="email" name="email"></td>
 			</tr>
-			<tr>
-				<td colspan="4"><input type="submit" value="수정"> <input
-					type="reset" value="취소"> <input type="button" value="삭제"
-					onclick="location.href='Delete.jsp'"> <input type="button"
-					value="목록보기" onclick="location.href='Select.jsp'"></td>
-			</tr>
 		</table>
+		<input type="submit" value="수정"> <input type="reset"
+			value="취소"> <input type="button" value="삭제"
+			onclick="location.href='DeleteForm.jsp?memberid=<%=memberid%>'">
+		<input type="button" value="목록보기" onclick="location.href='Select.jsp'">
 	</form>
 </body>
 </html>
