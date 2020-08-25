@@ -7,7 +7,7 @@
 <title>로그인</title>
 </head>
 <body>
-<form action="loginOK.jsp" method="get">
+<form action="LoginOK.jsp" method="get">
 	<table border="1">
 		<tr>
 			<td>사용자 ID</td>

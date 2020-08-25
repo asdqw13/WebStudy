@@ -1,11 +1,13 @@
 package pro;
 
+import java.sql.Timestamp;
+
 public class MemberBeans {
 	private String mem_uid;
 	private String mem_pwd;
 	private String mem_name;
 	private String mem_email;
-	private String mem_regdate;
+	private Timestamp mem_regdate;
 	private String mem_addr;
 	
 	public String getMem_uid() {
@@ -32,10 +34,10 @@ public class MemberBeans {
 	public void setMem_email(String mem_email) {
 		this.mem_email = mem_email;
 	}
-	public String getMem_regdate() {
+	public Timestamp getMem_regdate() {
 		return mem_regdate;
 	}
-	public void setMem_regdate(String mem_regdate) {
+	public void setMem_regdate(Timestamp mem_regdate) {
 		this.mem_regdate = mem_regdate;
 	}
 	public String getMem_addr() {

@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>Insert title here</title>
+<title>회원수정</title>
 </head>
 <body>
 	<form action="RegisterOK.jsp" method="get">

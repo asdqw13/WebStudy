@@ -12,5 +12,9 @@ insert into memberT(mem_uid, mem_pwd, mem_name, mem_email)
 values('100','111','홍길동', 'hong@han.com');
 insert into memberT(mem_uid, mem_pwd, mem_name, mem_email)
 values('1001','222','홍길동', 'hong@han.com');
+insert into memberT(mem_uid, mem_pwd, mem_name, mem_email)
+values('111','111','홍길동', 'hong@han.com');
+insert into memberT(mem_uid, mem_pwd, mem_name, mem_email)
+values('222','222','홍길동', 'hong@han.com');
 
 select * from memberT;
