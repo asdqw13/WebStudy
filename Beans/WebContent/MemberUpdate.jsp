@@ -7,7 +7,12 @@
 <title>회원수정</title>
 </head>
 <body>
-	<form action="RegisterOK.jsp" method="get">
+<jsp:useBean id="mb" class="pro.MemberBeans"/>
+<jsp:setProperty property="*" name="mb"/>
+<%-- <%
+	String mem_uid=request.getParameter("mem_uid"); // <%=mem_uid%> 사용
+%> --%>
+	<form action="MemberUpdateOK.jsp" method="get">
 		<table border="1">
 			<tr>
 				<td colspan="2">
@@ -17,7 +22,7 @@
 			</tr>
 			<tr>
 				<td>아이디</td>
-				<td><input type="text" name="mem_uid">*</td>
+				<td><input type="text" name="mem_uid" value='<%=mb.getMem_uid()%>'>*</td>
 			</tr>
 			<tr>
 				<td>비밀번호</td>
