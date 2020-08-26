@@ -18,7 +18,7 @@ public class MemberDBBeans {
 	// 3. DB연결을 위한 메소드
 	public Connection getConnection() throws Exception { // DB연결을 하여 커넥션을 리턴하기 위한 메소드
 		Context ctx=new InitialContext(); // 톰캣의 sever.xml의 내용의 context를 가져오기 위한 클래스
-		DataSource ds=(DataSource) ctx.lookup("java:comp:evb/jdbc/myoracle");
+		DataSource ds=(DataSource) ctx.lookup("java:comp/env/jdbc/myoracle");
 		// context태그에서 "jdbc/myoracle"이름을 찾음
 		return ds.getConnection();
 	}

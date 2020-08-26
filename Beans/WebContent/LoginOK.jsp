@@ -27,12 +27,15 @@
 	}
 	else {
 		String name=mb.getMem_name();
+		String id=mb.getMem_uid();
 		if(check==1) { // 아이디와 비번이 일치 함
 			System.out.println("id, pwd일치");
+			session.setAttribute("name", name);
+			session.setAttribute("id", id);
 %>
 		<script language="javascript">
 			alert("축하합니다.")
-			history.back();
+			document.location.href="Main.jsp";
 		</script>
 <%	
 		}
