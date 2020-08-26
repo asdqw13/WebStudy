@@ -22,7 +22,7 @@
 		<tr>
 			<td>
 				<input type="submit" value="로그아웃">
-				<input type="button" value="회원정보변경" onclick="location.href='MemberUpdate.jsp'">
+				<input type="button" value="회원정보변경" onclick="location.href='MemberUpdate.jsp?mem_uid=<%=id %>'">
 			</td>
 		</tr>
 	</table>
