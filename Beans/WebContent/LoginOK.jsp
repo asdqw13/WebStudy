@@ -14,12 +14,24 @@
 	String mem_pwd=request.getParameter("mem_pwd");
 	// 자바Model 객체생성
 	MemberDBBeans manager=MemberDBBeans.getInstance();
-	int check=manager.userCheck(mem_uid, mem_pwd);
 	
-	if(check==1) out.print("아이디와 비밀번호 일치");
-	else if(check==0) out.print("비밀번호 불일치");
-	else out.print("아이디가 존재하지 않습니다.");
-	/* MemberBeans mb=manager.getMember(mem_uid); */
+	int check=manager.userCheck(mem_uid, mem_pwd); // id, pwd일치 확인
+	MemberBeans mb=manager.getMember(mem_uid); // id를 가져 옴
+	if(mb==null) {
+		System.out.println("조회결과없음");
+	}
+	else {
+		String name=mb.getMem_name();
+		if(check==1) { // 아이디와 비번이 일치 함
+			System.out.println("id, pwd일치");
+		}
+		else if(check==0) {
+			System.out.println("pwd불일치");
+		}
+		else {
+			System.out.println("id없음");
+		}
+	}
 %>
 </body>
 </html>

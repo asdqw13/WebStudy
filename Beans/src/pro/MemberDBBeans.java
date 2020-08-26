@@ -85,7 +85,7 @@ public class MemberDBBeans {
 		rs.close();
 		pstmt.close();
 		con.close();
-		return null;
+		return member;
 	}
 	
 	// 7. 데이터 수정 update
@@ -129,6 +129,7 @@ public class MemberDBBeans {
 		ResultSet rs=null;
 		int re=-1;
 		String sql="select mem_pwd from memberT where mem_uid=?";
+		con=getConnection();
 		pstmt=con.prepareStatement(sql);
 		pstmt.setString(1, mem_uid);
 		rs=pstmt.executeQuery();
@@ -143,6 +144,7 @@ public class MemberDBBeans {
 		rs.close();
 		pstmt.close();
 		con.close();
+		
 		return re;
 	}
 }
