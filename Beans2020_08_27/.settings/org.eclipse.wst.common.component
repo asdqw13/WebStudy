@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-    <wb-module deploy-name="Beans">
+    <wb-module deploy-name="Beans2020_08_27">
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
-        <property name="context-root" value="Beans"/>
-        <property name="java-output-path" value="/Beans/build/classes"/>
+        <property name="java-output-path" value="/Beans2020_08_27/build/classes"/>
+        <property name="context-root" value="Beans2020_08_27"/>
     </wb-module>
 </project-modules>

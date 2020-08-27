@@ -1,49 +1,49 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
-<title>х╦©Ь╟║ют</title>
+<meta charset="UTF-8">
+<title>М ▄Л⌡░Й╟─Л·┘</title>
 </head>
 <body>
 	<form action="RegisterOK.jsp" method="get">
 		<table border="1">
 			<tr>
 				<td colspan="2">
-					<h1>х╦©Ь ╟║ют ╫ец╩</h1>
-					<p>* г╔╫ц гв╦Яю╨ гй╪Ж ют╥б гв╦Яют╢о╢ы.</p>
+					<h1>М ▄Л⌡░ Й╟─Л·┘ Л▀═Л╡╜</h1>
+					<p>* М▒°Л▀° М∙╜К╙╘Л²─ М∙└Л┬≤ Л·┘К═╔ М∙╜К╙╘Л·┘К▀┬К▀╓.</p>
 				</td>
 			</tr>
 			<tr>
-				<td>╬фюл╣П</td>
+				<td>Л∙└Л²╢К■■</td>
 				<td><input type="text" name="mem_uid">*</td>
 			</tr>
 			<tr>
-				<td>╨Я╧п╧Ьхё</td>
+				<td>К╧└К╟─К╡┬М≤╦</td>
 				<td><input type="password" name="mem_pwd">*</td>
 			</tr>
 					<tr>
-				<td>╨Я╧п╧Ьхё х╝юн</td>
+				<td>К╧└К╟─К╡┬М≤╦ М≥∙Л²╦</td>
 				<td><input type="password" name="mem_pwd2">*</td>
 			</tr>
 			<tr>
-				<td>юл╦╖</td>
+				<td>Л²╢К╕└</td>
 				<td><input type="text" name="mem_name">*</td>
 			</tr>
 			<tr>
-				<td>юл╦чюо</td>
+				<td>Л²╢К╘■Л²╪</td>
 				<td><input type="email" name="mem_email">*</td>
 			</tr>
 			<tr>
-				<td>аж╪р</td>
+				<td>Лё╪Л├▄</td>
 				<td><input type="text" name="mem_addr"></td>
 			</tr>
 			<tr>
 				<td colspan="2">
-					<input type="submit" value="╣Н╥о">
-					<input type="reset" value="╢ы╫цют╥б">
-					<input type="button" value="╟║ют╫ец╩">
+					<input type="submit" value="К⌠╠К║²">
+					<input type="reset" value="К▀╓Л▀°Л·┘К═╔">
+					<input type="button" value="Й╟─Л·┘Л▀═Л╡╜">
 				</td>
 			</tr>
 		</table>
