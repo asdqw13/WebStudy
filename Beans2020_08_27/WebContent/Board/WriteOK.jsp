@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>EditOK</title>
+<title>WriteOK</title>
 </head>
 <body>
 <jsp:useBean id="board" class="pro.BoardBeans"/>
@@ -18,7 +18,7 @@
 	
 	int re=db.InsertBoard(board);
 	if(re==1) response.sendRedirect("List.jsp");
-	else response.sendRedirect("Edit.jsp");
+	else response.sendRedirect("Write.jsp");
 %>
 </body>
 </html>

@@ -3,6 +3,8 @@ package pro;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -86,36 +88,121 @@ public class BoardDBBeans {
 		
 		return re;
 	}
-	// select * from board
-	public void ListBoard(String pagenumber) throws Exception { // List.jsp에서 page번호가 전달될 수 있음
+	// 4. select * from board
+	// ArrayList<String> a=new ArrayList<String>();
+	// a.add("대한민국");
+	// a.add("홍길동");
+	// 출력(a.get(0)); // 대한민국
+	// 출력(a.get(1)); // 홍길동
+	public ArrayList<BoardBeans> ListBoard() throws Exception { // List.jsp에서 page번호가 전달될 수 있음
+		Connection con=null;
+		PreparedStatement pstmtsel=null;
+		ResultSet rssel=null; // 결과통
+		String sqlsel="select * from board order by b_ref desc, b_step asc";
+		
+		ArrayList<BoardBeans> BoardList=new ArrayList<BoardBeans>(); // 배열명
+		BoardBeans board;
+		
+		con=getConnection();
+		pstmtsel=con.prepareStatement(sqlsel);
+		rssel=pstmtsel.executeQuery();
+		while(rssel.next()) {
+			board=new BoardBeans();
+			board.setB_id(rssel.getInt(1));
+			board.setB_name(rssel.getString(2));
+			board.setB_email(rssel.getString(3));
+			board.setB_title(rssel.getString(4));
+			board.setB_content(rssel.getString(5));
+			board.setB_pwd(rssel.getString(6));
+			board.setB_date(rssel.getTimestamp(7));
+			board.setB_hit(rssel.getInt(8));
+			board.setB_ip(rssel.getString(9));
+			board.setB_ref(rssel.getInt(10));
+			board.setB_step(rssel.getInt(11));
+			board.setB_level(rssel.getInt(12));
+			BoardList.add(board); // BoardList배열에 추가(board레코드를)
+		}
+		return BoardList; // 배열자체를 리턴
+	}
+	// 5. select * from board b_id=___(View.jsp)
+	public BoardBeans getBoard(String b_id) throws Exception {
 		Connection con=null;
 		PreparedStatement pstmt=null;
-		ResultSet rs=null; // 결과통
-		ResultSet pageset=null; // 
-		String sql="select count(b_id) from board"; // 총 레코드 수	
-		int absolute_page=1;
-		int dbcount=0; // DB의 글의 수=0
+		ResultSet rs=null;
+		int re=-1;
+		String sql="select * from board where b_id=?";
 		
-		con=getConnection(); // DB연결(2)
+		BoardBeans board=new BoardBeans();
+		
+		con=getConnection();
 		pstmt=con.prepareStatement(sql);
-		pageset=pstmt.executeQuery(); // pageset=1
-		if(pageset.next()) {
-			dbcount=pageset.getInt(1); // 총 갯수
-			pstmt.close();
-			pageset.close();
-		}
-		// 생략
-		
-		String strsql="select * from board order by b_ref desc, b_step asc";
-		pstmt=con.prepareStatement(strsql);
+		pstmt.setInt(1, Integer.valueOf(b_id));
 		rs=pstmt.executeQuery();
 		if(rs.next()) {
-			rs.absolute(absolute_page);
-			int count=0;
-			
+			board.setB_id(rs.getInt(1));
+			board.setB_name(rs.getString(2));
+			board.setB_email(rs.getString(3));
+			board.setB_title(rs.getString(4));
+			board.setB_content(rs.getString(5));
+			board.setB_pwd(rs.getString(6));
+			board.setB_date(rs.getTimestamp(7));
+			board.setB_hit(rs.getInt(8));
+			board.setB_ip(rs.getString(9));
+			board.setB_ref(rs.getInt(10));
+			board.setB_step(rs.getInt(11));
+			board.setB_level(rs.getInt(12));
 		}
+		pstmt.close();
+		con.close();
+		return board;
 	}
-	// update board set ___ where ___
+	// 6. update board set ___ where ___(EditOK.jsp)
+	public int EditBoard(BoardBeans board) {
+		
+		Connection con=null;
+		PreparedStatement pstmtsel=null;
+		PreparedStatement pstmtup=null;
+		ResultSet rs=null;
+		int re=-1;
+		String sqlsel="select b_pwd from board where b_id=?";
+		String sqlup="update board set b_name=?, b_email=?, ";
+		sqlup+="b_title=?, b_content=? where b_id=?";
+		
+		try {
+			con=getConnection();
+			pstmtsel=con.prepareStatement(sqlsel);
+			pstmtsel.setInt(1, board.getB_id());
+			rs=pstmtsel.executeQuery();
+			if(rs.next()) {
+				String pwd=rs.getString(1);
+				if(!pwd.equals(board.getB_pwd())) re=0; // 실패시 re=0
+				else {
+					pstmtup=con.prepareStatement(sqlup);
+					pstmtup.setString(1, board.getB_name());
+					pstmtup.setString(2, board.getB_email());
+					pstmtup.setString(3, board.getB_title());
+					pstmtup.setString(4, board.getB_content());
+					pstmtup.setInt(5, board.getB_id());
+					re=pstmtup.executeUpdate(); // 성공시 re=1
+				}
+			}
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		finally {
+			try {
+				rs.close();
+				pstmtsel.close();
+				pstmtup.close();
+				con.close();
+			}
+			catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return 0;
+	}
 	
 	// 7. delete from board where ___
 	public int DeleteBoard(int b_id, String b_pwd) throws Exception {

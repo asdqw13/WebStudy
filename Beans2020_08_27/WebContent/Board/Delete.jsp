@@ -14,7 +14,10 @@
 			<td colspan="2">비밀번호를 입력하세요.</td>
 		</tr>
 		<tr>
-			<td><input type="password" name="b_pwd"></td>
+			<td>
+				<input type="hidden" name="b_id" value="<%= %>">
+				<input type="password" name="b_pwd">
+			</td>
 		</tr>
 		<tr>
 			<td colspan="2">

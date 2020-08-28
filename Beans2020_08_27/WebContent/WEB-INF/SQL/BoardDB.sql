@@ -16,5 +16,7 @@ create table board (
 
 insert into board(b_id, b_name, b_email, b_title, b_content)
 	values(1, '홍길동', 'hong@hanmail.net', '연습', '지금은 연습자료입니다.');
+insert into board(b_id, b_name, b_email, b_title, b_content)
+	values(2, '이순자', 'lee@hanmail.net', '연습', '지금은 연습자료입니다.');
 
 select * from board;
