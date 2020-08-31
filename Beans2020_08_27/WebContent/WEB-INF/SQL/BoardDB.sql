@@ -14,9 +14,9 @@ create table board (
 	b_step number(5), /*11. 화면에 출력되는 글 위치*/
 	b_level number(5)); /*12. 답변 순위*/
 
-insert into board(b_id, b_name, b_email, b_title, b_content)
-	values(1, '홍길동', 'hong@hanmail.net', '연습', '지금은 연습자료입니다.');
-insert into board(b_id, b_name, b_email, b_title, b_content)
-	values(2, '이순자', 'lee@hanmail.net', '연습', '지금은 연습자료입니다.');
+insert into board(b_id, b_name, b_pwd, b_email, b_title, b_content)
+	values(1, '홍길동', 'hong', 'hong@hanmail.net', '연습', '지금은 연습자료입니다.');
+insert into board(b_id, b_name, b_pwd, b_email, b_title, b_content)
+	values(2, '이순자', 'lee', 'lee@hanmail.net', '연습', '지금은 연습자료입니다.');
 
 select * from board;

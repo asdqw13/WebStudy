@@ -47,7 +47,7 @@ for(int i=0;i<BoardList.size();i++) {
 		<td><%=b_date %></td>
 		<td><%=b_hit %></td>
 	</tr>
-	<%} %>
+	<%} %>	
 </table>
 </body>
 </html>

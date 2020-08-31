@@ -6,16 +6,20 @@
 <meta charset="UTF-8">
 <title>Delete</title>
 </head>
+<% 
+	String b_id=request.getParameter("b_id");
+	System.out.println(b_id);
+%>
 <body>
 <h1>글 삭제</h1>
 <form action="DeleteOK.jsp" method="get">
-	<table>
+	<table border="1">
 		<tr>
 			<td colspan="2">비밀번호를 입력하세요.</td>
 		</tr>
 		<tr>
 			<td>
-				<input type="hidden" name="b_id" value="<%= %>">
+				<input type="hidden" name="b_id" value="<%=b_id %>">
 				<input type="password" name="b_pwd">
 			</td>
 		</tr>

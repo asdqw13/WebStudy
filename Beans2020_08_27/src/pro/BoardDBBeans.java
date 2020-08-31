@@ -201,7 +201,7 @@ public class BoardDBBeans {
 				e.printStackTrace();
 			}
 		}
-		return 0;
+		return re;
 	}
 	
 	// 7. delete from board where ___
