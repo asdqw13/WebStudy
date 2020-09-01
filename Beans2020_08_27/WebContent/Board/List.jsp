@@ -18,7 +18,7 @@
 	// 변수 선언
 	int b_id, b_hit;
 	Timestamp b_date;
-	String b_title, b_name, b_email;
+	String b_title, b_name;
 %>
 
 <h1>게시판</h1>

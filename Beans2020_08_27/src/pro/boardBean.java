@@ -2,7 +2,7 @@ package pro;
 
 import java.sql.Timestamp;
 
-public class BoardBeans {
+public class boardBean {
 	private int b_id;
 	private String b_name;
 	private String b_email;
@@ -15,7 +15,6 @@ public class BoardBeans {
 	private int b_ref;
 	private int b_step;
 	private int b_level;
-	
 	public int getB_id() {
 		return b_id;
 	}
@@ -89,33 +88,32 @@ public class BoardBeans {
 		this.b_level = b_level;
 	}
 	
-	public static int pagesize=5; // 현 페이지당 10개 출력
-	public static int pagecount=1; // 페이지 개수 지정 변수
-	public static int pagenum=1; // 페이지 번호
-	
-	public static String pageNumber(int limit) { // 시작 페이지
-		String str="";
-		int temp=(pagenum-1) % limit;
-		int startPage=pagenum-temp;
-		// [이전] 링크 추가
-		if((startPage=limit)>0) {
-			str="<a href='List.jsp?pagenum="+(startPage-1)+"'>[이전]</a>&nbsp;&nbsp;";
-		}
-		// 페이지 번호 나열
-		for(int i=startPage; i<(startPage+limit); i++) {
-			if(i==pagenum) {
-				str+="["+i+"]&nbsp;&nbsp;";
-			}
-			else {
-				str+="<a href='List.jsp?pagenum="+i+"'>["+i+"]</a>&nbsp;&nbsp;'";
-			}
-			if(i>=pagecount) break;
-		}	
-		// for문 끝
-		// [다음] 링크 추가
-		if((startPage+limit)<=pagecount) {
-			str+="<a href='List.jsp?pagenum="+(startPage+limit)+"'>[다음]</a>";
-		}
-		return str;
-	}
+	public static  int pagesize = 10;// 한 페이지 당 10개 출력물
+    public static  int pagecount= 1 ;// 페이지 개수 지정 변수(50/pagesize)=5, pagecount=5
+	public static  int pageNUM= 1;   // 페이지 번호 pageNUM=3
+
+	public static String  pageNumber(int limit){  
+	    String str = "";  
+	    int temp = (pageNUM-1) % limit ;         //시작 페이지 구하기
+	    int startPage = pageNUM -temp;
+	    // [이전] 링크 추가하기
+	    if ((startPage-limit)>0){
+	      str="<a href='list.jsp?pageNUM="+(startPage-1)+"'>[이전]</a>&nbsp;&nbsp;";
+	    }
+	    //페이지 번호 나열하기
+	    for(int i=startPage ; i<(startPage+limit);i++){
+	      if( i == pageNUM){
+	          str +="["+i+"]&nbsp;&nbsp;";
+	      }else{
+	        str += "<a href='list.jsp?pageNUM="+i+"'>["+i+"]</a>&nbsp;&nbsp;";
+	      }
+	      if(i >= pagecount) break;
+	    }//for문 끝...
+	    //[다음] 링크 추가
+	    if ((startPage+limit)<=pagecount){  
+	      str += "<a href='list.jsp?pageNUM=" +
+	(startPage+limit)+"'>[다음]</a>";
+	    }   
+	      return str;
+	    }
 }

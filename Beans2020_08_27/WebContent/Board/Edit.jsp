@@ -11,7 +11,7 @@
 <%
 	String b_id=request.getParameter("b_id");
 	BoardDBBeans db=BoardDBBeans.getInstance();
-	BoardBeans board=db.getBoard(b_id);
+	BoardBeans board=db.getBoard(b_id, false);
 %>
 <body>
 <h1>글 수정</h1>
