@@ -19,4 +19,9 @@ insert into board(b_id, b_name, b_pwd, b_email, b_title, b_content)
 insert into board(b_id, b_name, b_pwd, b_email, b_title, b_content)
 	values(2, '이순자', 'lee', 'lee@hanmail.net', '연습', '지금은 연습자료입니다.');
 
+alter table board add(b_fname varchar(50));
+alter table board add(b_fsize number(5));
+
+alter table board modify(b_fsize number(20));
+ 
 select * from board;

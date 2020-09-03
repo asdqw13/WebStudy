@@ -8,7 +8,12 @@ import java.util.ArrayList;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
+import javax.servlet.http.HttpServletRequest;
 import javax.sql.DataSource;
+
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+import com.oreilly.servlet.multipart.MultipartParser;
 
 public class boardDBBean {
 
@@ -39,6 +44,8 @@ public class boardDBBean {
 		int b_level=board.getB_level();  // 답변답변
 		int num=0;         //번호
 		
+
+		
 		con=getConnection();
 		
 		sql="select max(b_id) from board";  //b_id의 가장큰 id 찾기
@@ -63,9 +70,27 @@ public class boardDBBean {
 			b_step=0;
 			b_level=0;
 		}
-		sql="insert into board(b_id, b_name, b_email, b_title, b_content, b_pwd, b_date,";
-		sql+="b_ip, b_ref, b_step, b_level) values(?,?,?,?,?,?,?,?,?,?,?)";
+		/*
+		  sql="insert into board(b_id, b_name, b_email, b_title, b_content, b_pwd, b_date,"
+		  ; sql+="b_ip, b_ref, b_step, b_level) values(?,?,?,?,?,?,?,?,?,?,?)";
+		 */
 	
+		//파일업로드시에 파일전송
+	    String b_fname="";
+	    int b_fsize=0;
+	    String uploadPath="c:\\uptest";   //하드디스크에 업로드될 경로
+	    int size=10*1024*1024;    //10메가
+		
+	    
+		/*
+		MultipartRequest multi=new MultipartRequest(request, uploadPath, size,
+		"euc-kr", new DefaultFileRenamePolicy());
+		 */
+	    
+	    	
+		sql="insert into board(b_id, b_name, b_email, b_title, b_content, b_pwd, b_date,";
+		sql+="b_ip, b_ref, b_step, b_level, b_fname, b_fsize) values(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		
 		pstmt=con.prepareStatement(sql);
 		pstmt.setInt(1, num);                   //no
 		pstmt.setString(2, board.getB_name());   //이름
@@ -78,6 +103,8 @@ public class boardDBBean {
 		pstmt.setInt(9, b_ref);         //글 그룹번호 
 		pstmt.setInt(10, b_step);        //글 위치
 		pstmt.setInt(11, b_level);      //답변 레벨
+		pstmt.setString(12, board.getB_fname());
+		pstmt.setInt(13, board.getB_fsize());
 	
 		re=pstmt.executeUpdate();   //re=1 저장 
 		
@@ -120,43 +147,44 @@ public class boardDBBean {
 //			board.setB_level(rssel.getInt(12));
 //			boardlist.add(board); //boardlist배열에 추가한다 (board레코드)를  
 //		}
-//		
 //		return boardlist;   //boardlist배열 리턴
 //	}
+	
 	public ArrayList<boardBean> listBoard(String pageNUM) throws Exception {  //list.jsp에서 page번호가 전달될수 있다
 		Connection con=null;
 		PreparedStatement pstmtsel=null;
 		ResultSet rssel=null;     //결과통
 		
+	
 		String sqlsel="select * from board order by b_ref desc, b_step asc";
 		ArrayList<boardBean> boardlist=new ArrayList<boardBean>();//배열명boardlist
 		boardBean board;  //임시메모리
 		con=getConnection();
 		
-		//페이지를 위한 추가
-		int absolutepage=1; //절대페이지1
-		int dbcount=0; //전체카운트=50개
+		//페이지를 위한 추가---------------------------------------
+		int absolutepage=1;     //절대페이지=1
+		int dbcount=0;       //전체카운드 =50개
 		PreparedStatement pstmt=con.prepareStatement("select count(b_id) from board");
-		ResultSet rs=pstmt.executeQuery(); //50
+		ResultSet rs=pstmt.executeQuery();  //50
 		if(rs.next()) {
-			dbcount=rs.getInt(1); //dbcount=50
+		     dbcount=rs.getInt(1);    //dbcount=50	
 		}
-		if(dbcount%boardBean.pagesize==0)
-			boardBean.pagecount=dbcount/(boardBean.pagesize); //총 페이지 수 구하기
-		else
-			boardBean.pagecount=dbcount/(boardBean.pagesize)+1; //총 페이지 수 구하기
-		if(pageNUM!=null) { // pageNUM=3
-			boardBean.pageNUM=Integer.valueOf(pageNUM); //지정 된 페이지 보여주기
-			absolutepage=(boardBean.pageNUM-1)*boardBean.pagesize+1; // 21
-		}
-		//-----------------
-		
+		if(dbcount%boardBean.pagesize == 0)    
+		     boardBean.pagecount = dbcount/(boardBean.pagesize); // 총 페이지수 구하기
+		   else
+		     boardBean.pagecount = dbcount/(boardBean.pagesize)+1; // 총 페이지수 구하기
+		    
+		   if(pageNUM!=null) {   //pageNUM=3
+		     boardBean.pageNUM=Integer.valueOf(pageNUM);//지정된 페이지 보여주기
+		     absolutepage=(boardBean.pageNUM-1)*boardBean.pagesize+1; // 21
+		   }
+		 //---------------------------------------
+		   
 		pstmtsel=con.prepareStatement(sqlsel, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
 		rssel=pstmtsel.executeQuery();
 		if(rssel.next()) {
-			rssel.absolute(absolutepage);
+			rssel.absolute(absolutepage);   //동적인 준비된통
 			int count=0;
-			
 			while(count<boardBean.pagesize) {
 				board=new boardBean();
 				board.setB_id(rssel.getInt("b_id"));
@@ -171,11 +199,10 @@ public class boardDBBean {
 				board.setB_ref(rssel.getInt(10));
 				board.setB_step(rssel.getInt(11));
 				board.setB_level(rssel.getInt(12));
-				boardlist.add(board); //boardlist배열에 추가한다 (board레코드)를 
-				
+				boardlist.add(board); //boardlist배열에 추가한다 (board레코드)를  
 				if(rssel.isLast()) break;
-				else {
-				rssel.next();
+				else { 
+					rssel.next();
 				}
 				count++;
 			}

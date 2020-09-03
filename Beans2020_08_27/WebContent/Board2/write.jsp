@@ -12,7 +12,8 @@
 //답변글 때문에~~
    String b_name="", b_title="";
    int b_ref=0,b_step=0,b_level=0, b_id=0;
-   String pageNUM=request.getParameter("pageNUM");
+   
+   String pageNUM=request.getParameter("pageNUM");  //현재페이지 3
    
    if(request.getParameter("b_id")!=null){
 	   b_id=Integer.valueOf(request.getParameter("b_id"));
@@ -30,7 +31,7 @@
 %>
 <body>
 <h1>글올리기</h1>
-<form action="write_ok.jsp" method="get">
+<form action="write_ok.jsp" method="post" enctype="multipart/form-data">
 <table border="1">
    <tr>
        <td>작성자</td>
@@ -40,7 +41,7 @@
        <input type="hidden" name="b_step" value="<%=b_step %>" />
        <input type="hidden" name="b_level" value="<%=b_level %>" />
        
-       <input type="text" name="b_name" value="<%=b_name%>" /></td>
+       <input type="text" name="b_name" /></td>
        <td>이메일</td>
        <td><input type="text" name="b_email" /></td>
    </tr>
@@ -56,6 +57,10 @@
    </tr>
    <tr>
        <td colspan="4"><textarea name="b_content"></textarea></td>
+   </tr>
+   <tr>
+       <td>파일첨부</td>
+       <td><input type="file" name="b_fname"></td>
    </tr>
    <tr>
       <td>암호</td>

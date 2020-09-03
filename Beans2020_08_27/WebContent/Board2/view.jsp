@@ -40,11 +40,11 @@
    <tr> 
        <td colspan="4">
           <input type="button" value="글수정" 
-             onclick="location.href='edit.jsp?b_id=<%=board.getB_id() %>&pageNUM=<%=pageNUM %>'">
+             onclick="location.href='edit.jsp?b_id=<%=board.getB_id() %>&pageNUM=<%=pageNUM%>'">
           <input type="button" value="글삭제" 
-             onclick="location.href='bdelete.jsp?b_id=<%=board.getB_id() %>&pageNUM=<%=pageNUM %>'">
+             onclick="location.href='bdelete.jsp?b_id=<%=board.getB_id() %>&pageNUM=<%=pageNUM%>'">
           <input type="button" value="답변글" 
-             onclick="location.href='write.jsp?b_id=<%=board.getB_id() %>&pageNUM=<%=pageNUM %>'">
+             onclick="location.href='write.jsp?b_id=<%=board.getB_id() %>&pageNUM=<%=pageNUM%>'">
           <input type="button" value="글목록" onclick="location.href='list.jsp'">
        </td>
    </tr> 

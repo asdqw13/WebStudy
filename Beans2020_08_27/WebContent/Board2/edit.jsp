@@ -10,7 +10,7 @@
 <link href="" rel="stylesheet" />
 </head>
 <%
-	String pageNUM=request.getParameter("pageNUM");
+    String pageNUM=request.getParameter("pageNUM");  //현재페이지 3
 	String b_id=request.getParameter("b_id");
     boardDBBean db=boardDBBean.getInstance();
     boardBean board=db.getBoard(b_id,false);

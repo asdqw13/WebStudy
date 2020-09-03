@@ -7,7 +7,7 @@
 <title>글삭제 bdelete</title>
 </head>
 <%
-String pageNUM=request.getParameter("pageNUM");
+String pageNUM=request.getParameter("pageNUM");  //현재페이지 3
 String b_id=request.getParameter("b_id");
 System.out.println(b_id);
 %>

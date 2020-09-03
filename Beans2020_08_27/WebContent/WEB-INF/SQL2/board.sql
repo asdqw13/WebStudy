@@ -20,3 +20,8 @@ insert into board(b_id, b_name, b_pwd, b_email, b_title, b_content)
       values(2, '인순자', 'lee', 'hong@hanmail.net', '연습2', '지금은 연습자료입니다.');
             
  select * from board;
+
+ alter table board add(b_fname varchar(50));
+ alter table board add(b_fsize number(5));
+ 
+ alter table board modify(b_fsize number(20));

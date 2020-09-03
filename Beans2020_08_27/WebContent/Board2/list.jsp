@@ -12,15 +12,16 @@
 </head>
 <body>
 <%
-   String pageNUM=request.getParameter("pageNUM"); // 현재페이지 3
+   String pageNUM=request.getParameter("pageNUM");  //현재페이지 3
    if(pageNUM==null) pageNUM="1";
    boardDBBean db=boardDBBean.getInstance(); //db는 boardDBBean의 객체
    ArrayList<boardBean> boardlist=db.listBoard(pageNUM); //전체레코드(10명)를 리턴
    SimpleDateFormat sdf=new SimpleDateFormat("yyyy-mm-dd HH:mm");
    //변수 선언
-   int b_id, b_hit;
+   int b_id, b_hit, b_level;
    String b_title, b_name, b_email;
    Timestamp b_date;
+   int k;
 %>
 <h1>게시판</h1>
 <a href="write.jsp">글쓰기</a>
@@ -42,18 +43,30 @@ for(int i=0;i<boardlist.size();i++){   //열고
 	b_email=board.getB_email();
 	b_date=board.getB_date();
 	b_hit=board.getB_hit();
+	b_level=board.getB_level();   //level 은 답변이면 1,2,3 증가하는 값임
+			
 	
 %>
   <tr>
      <td><%=b_id%></td>
-     <td><a href="view.jsp?b_id=<%=b_id%>&pageNUM=<%=pageNUM %>"><%=b_title%></a></td>
-     <td><%=b_name%></td>
+     <td>
+     
+ <% if(b_level>0) {
+     for(k=0;k<b_level;k++) {
+ %>
+      <img src="../images/AnswerLine.gif" alt="" />
+ <% 	 
+     } }
+ %>    
+    
+     <a href="view.jsp?b_id=<%=b_id%>&pageNUM=<%=pageNUM%>"><%=b_title%></a></td>
+     <td><a href="mail.jsp?b_email=<%=b_email %>" /><%=b_name%></a></td>
      <td><%=b_date%></td>
      <td><%=b_hit%></td>
   </tr>
  <%} %>
 </table>
 
-<%=boardBean.pageNumber(4) %> <br/>
+<%=boardBean.pageNumber(3)%> <br/>
 </body>
 </html>

@@ -15,6 +15,24 @@ public class boardBean {
 	private int b_ref;
 	private int b_step;
 	private int b_level;
+	private String b_fname;
+	private int b_fsize;
+	
+	public void setB_fname(String b_fname) {
+		this.b_fname = b_fname;
+	}
+	public String getB_fname() {
+		return b_fname;
+	}
+	public void b_fsize(String b_fname) {
+		this.b_fname = b_fname;
+	}
+	public int getB_fsize() {
+		return b_fsize;
+	}
+	public void setB_fsize(int b_fsize) {
+		this.b_fsize = b_fsize;
+	}
 	public int getB_id() {
 		return b_id;
 	}
@@ -88,13 +106,13 @@ public class boardBean {
 		this.b_level = b_level;
 	}
 	
-	public static  int pagesize = 10;// 한 페이지 당 10개 출력물
-    public static  int pagecount= 1 ;// 페이지 개수 지정 변수(50/pagesize)=5, pagecount=5
-	public static  int pageNUM= 1;   // 페이지 번호 pageNUM=3
+	public static  int pagesize = 5;// 한 페이지 당 10개 출력물
+    public static  int pagecount= 1 ;// 페이지 개수 지정 변수 (50/pagesize)=5, pagecount=5
+	public static  int pageNUM= 1;   // 페이지 번호             pageNUM=3
 
 	public static String  pageNumber(int limit){  
 	    String str = "";  
-	    int temp = (pageNUM-1) % limit ;         //시작 페이지 구하기
+	    int temp = (pageNUM-1) % limit ; //시작 페이지 구하기
 	    int startPage = pageNUM -temp;
 	    // [이전] 링크 추가하기
 	    if ((startPage-limit)>0){
