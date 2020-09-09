@@ -3,9 +3,9 @@ package com.test.util;
 public interface  ServerInfo {
 	
 	public final static String URL = "http://localhost/member"; 
-	public final static String SMTP_URL = "localhost";        //°¡»ó¸ŞÀÏ¼­¹ö
-	public final static String MAIL_FROM_NAME = "ÇÑ±¹´É·ü°³¹ß¿ø";  //¹ß¼ÛÀÚ 
-	public final static String MAIL_FROM_EMAIL = "sil003@korea.com"; //¹ß¼ÛÀÚ ÀÌ¸ŞÀÏ
+	public final static String SMTP_URL = "localhost";        //ê°€ìƒë©”ì¼ì„œë²„
+	public final static String MAIL_FROM_NAME = "í•œêµ­ëŠ¥ë¥ ê°œë°œì›";  //ë°œì†¡ì 
+	public final static String MAIL_FROM_EMAIL = "sil003@korea.com"; //ë°œì†¡ì ì´ë©”ì¼
 		
 	public static final  boolean SET_HAN = true;
 	public static final  boolean GET_HAN = false;

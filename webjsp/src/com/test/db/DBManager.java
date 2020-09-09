@@ -9,26 +9,26 @@ public class DBManager{
 
 	public DBManager() {}
 	
+//	public Connection getConnection(String div) throws Exception{
+//	
+//		Connection con = null;	//연결
+//		
+//	    try	{
+//	    	Class.forName("oracle.jdbc.driver.OracleDriver"); 
+//	    }
+//	    catch(Exception e)	{	throw e;  }
+//	
+//	   try 	{
+//			con = DriverManager.getConnection("jdbc:oracle:thin:@127.0.0.1:1521:xe","userid","passwd"); 			    	
+//	   }
+//	   catch(Exception e){	throw e;   }
+//
+//	   return con;
+//	
+//	}
+	
+	//jdcp 기능 사용할시 ====================================
 	public Connection getConnection(String div) throws Exception{
-	
-		Connection con = null;	//연결
-		
-	    try	{
-	    	Class.forName("oracle.jdbc.driver.OracleDriver"); 
-	    }
-	    catch(Exception e)	{	throw e;  }
-	
-	   try 	{
-			con = DriverManager.getConnection("jdbc:oracle:thin:@127.0.0.1:1521:xe","userid","passwd"); 			    	
-	   }
-	   catch(Exception e){	throw e;   }
-
-	   return con;
-	
-	}
-	
-	//jdcp 기능 사용할 시 ====================================
-	/*public Connection getConnection(String div) throws Exception{
 		
 		Connection conn = null;
 		
@@ -46,6 +46,6 @@ public class DBManager{
  		
 		return conn;
 	}
-	*/
+	
 
 }

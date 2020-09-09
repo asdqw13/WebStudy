@@ -11,7 +11,7 @@ public class Utility {
     
   	public Utility() {  }
   
-  	//¼ıÀÚÀÎÁö¸¦ Ã¼Å© (´ë»ó, µğÆúÆ®°ª)=====================
+  	//ìˆ«ìì¸ì§€ë¥¼ ì²´í¬ (ëŒ€ìƒ, ë””í´íŠ¸ê°’)=====================
   	public static int numChk(String num, int value1)  {
   		int value = 0;
     	try {
@@ -22,7 +22,7 @@ public class Utility {
 		return value;
   	}  
   	
-  	//¹®ÀÚ°¡ null ÀÎÁö¸¦ Ã¼Å©==============================
+  	//ë¬¸ìê°€ null ì¸ì§€ë¥¼ ì²´í¬==============================
   	public static String stringChk(String value, String value1) {
     	try {
 			if(value == null){	value = value1;	}			
@@ -30,7 +30,7 @@ public class Utility {
     	return value;
   	}
   
-  	//¹®ÀÚ µ¥ÀÌÅ¸ ±æÀÌ¸¸Å­ Àß¶ó³»±â =======================
+  	//ë¬¸ì ë°ì´íƒ€ ê¸¸ì´ë§Œí¼ ì˜ë¼ë‚´ê¸° =======================
   	public static String content_div(String value, int size){
 		if(value == null) {		return "";		}
 		if(value.length() > size){
@@ -39,7 +39,7 @@ public class Utility {
 		return value;
 	}
   
-	//³¯Â¥ µ¥ÀÌÅ¸ Æ÷¸ä ¼³Á¤================================
+	//ë‚ ì§œ ë°ì´íƒ€ í¬ë©§ ì„¤ì •================================
   	public static String date_format1(String data_s, String div) throws Exception {
     	if(data_s != null){
      		if(data_s.length() > 7 ){
@@ -53,7 +53,7 @@ public class Utility {
       	return data_s;  
   	} 
   
-  	//³¯Â¥:½Ã°£ µ¥ÀÌÅ¸ Æ÷¸ä ¼³Á¤2==========================
+  	//ë‚ ì§œ:ì‹œê°„ ë°ì´íƒ€ í¬ë©§ ì„¤ì •2==========================
    	public static String date_format2(String data_s) throws Exception {
     	if(data_s != null){
 			if(data_s.length() > 13 ){
@@ -68,7 +68,7 @@ public class Utility {
       	return data_s;  
   	} 
  
-	//°Ô½Ã¹° Total ÆäÀÌÁö ¾ò±â ============================
+	//ê²Œì‹œë¬¼ Total í˜ì´ì§€ ì–»ê¸° ============================
   	public static int totalpage(int max_num,  int list_num ) {
   		int page_cnt = (int)(max_num / list_num);
         if (page_cnt == 0) page_cnt = 1;
@@ -78,20 +78,20 @@ public class Utility {
   		return page_cnt;
   	}  
     
-  	//ÆäÀÌÁö ³×ºñ°ÔÀÌ¼Ç »ı¼º ==============================
+  	//í˜ì´ì§€ ë„¤ë¹„ê²Œì´ì…˜ ìƒì„± ==============================
   	public static String pageNavigation(String self_url, String queryString, int max_num, int list_num, int int_pg) {
 	    StringBuffer buf  = new StringBuffer("\r\n");
 	    String tmp        = "";
-	    int page_size     = 10; //(ÀÌÀü  1 2 3 4 5 6 7 8 9 10 ÀÌÈÄ)
+	    int page_size     = 10; //(ì´ì „  1 2 3 4 5 6 7 8 9 10 ì´í›„)
 	    
-	    //Äõ¸®¹®ÀÚ¿­ÀÇ °ªÀ» ¹Ş¾Æ µéÀÎ´Ù.
+	    //ì¿¼ë¦¬ë¬¸ìì—´ì˜ ê°’ì„ ë°›ì•„ ë“¤ì¸ë‹¤.
 	    if(queryString == null) queryString ="";
 	    queryString = queryString.trim();
 	    
-	    //&req_pg°ªÀ» ¹Ş¾Æ¼­ Â©¶ó³½´Ù.
+	    //&req_pgê°’ì„ ë°›ì•„ì„œ ì§¤ë¼ë‚¸ë‹¤.
 	    int idx = queryString.indexOf("&req_pg");
 	    
-	    //¹®ÀÚ¿­À» Â©¶ó¼­ µÚ¿¡ ºÙÀÎ´Ù... 
+	    //ë¬¸ìì—´ì„ ì§¤ë¼ì„œ ë’¤ì— ë¶™ì¸ë‹¤... 
 	    if(idx > -1) {            
 	      tmp = queryString.substring(0,idx);
 	      if((idx = queryString.indexOf("&",idx+1)) > 0) {
@@ -101,7 +101,7 @@ public class Utility {
 	      }//end_else
 	    }//end if(idx)
 	    
-	    //ÃÑÆäÀÌÁö ¼ö¸¦ Ã¼Å©ÇÑ´Ù.  
+	    //ì´í˜ì´ì§€ ìˆ˜ë¥¼ ì²´í¬í•œë‹¤.  
 	    int page_cnt = (int)(max_num / list_num);
 	    
 	    if (page_cnt == 0) page_cnt = 1;
@@ -112,9 +112,9 @@ public class Utility {
 	    int last_pg  = page_cnt;
 	  
 	    if (start_pg != 1) {
-			buf.append("<a href='" + self_url + "?" + queryString + "&req_pg=" + (start_pg - 1) + "'>¢¸¢¸</a> /");
+			buf.append("<a href='" + self_url + "?" + queryString + "&req_pg=" + (start_pg - 1) + "'>â—€â—€</a> /");
 	    }else{
-			buf.append("¢¸¢¸ /");
+			buf.append("â—€â—€ /");
 	    }
 	    
 	    for(int i=start_pg; i<= (start_pg + (page_size-1)); i++)  {
@@ -128,16 +128,16 @@ public class Utility {
 	    }//end_for
 	    
 	    if ((start_pg + (page_size-1)) < page_cnt) {
-			buf.append("<a href='" + self_url + "?" + queryString + "&req_pg=" + (start_pg + page_size) + "'> ¢º¢º</a>");
+			buf.append("<a href='" + self_url + "?" + queryString + "&req_pg=" + (start_pg + page_size) + "'> â–¶â–¶</a>");
 	    } else{
-	      	buf.append(" ¢º¢º"); 
+	      	buf.append(" â–¶â–¶"); 
 	    }
 	            
 	    return buf.toString();           
 	          
     }//pageNavigation End Class
     
-	//<br> tag »ı¼º========================================
+	//<br> tag ìƒì„±========================================
   	public static  String getBrStr(String str) { 
     	if(str == null) {   return new String("");   }
     	StringBuffer buff = new StringBuffer(1024);   
@@ -207,7 +207,7 @@ public class Utility {
 			if( today.equals(""+startday) ) {
 				buff.append("	selected ");  
 			}
-			buff.append(" > "+ startday +"³â  </option>\n");	
+			buff.append(" > "+ startday +"ë…„  </option>\n");	
 		}
 		return buff.toString();
 	}
@@ -229,7 +229,7 @@ public class Utility {
 					buff.append(" selected ");  
 				}	
 			}	
-			buff.append(" > "+ i +"¿ù  </option>\n");
+			buff.append(" > "+ i +"ì›”  </option>\n");
 		}
 		return buff.toString();
   	}
@@ -244,21 +244,21 @@ public class Utility {
 				if(( today.substring(6,8)).equals("0"+i)) {
 					buff.append(" 	selected ");  
 				}
-				buff.append(" > "+ i +"ÀÏ  </option>\n");
+				buff.append(" > "+ i +"ì¼  </option>\n");
 			}
 			else{
 				buff.append("<option value='"+ i +"' ");
 				if(( today.substring(6,8)).equals(""+i)) {
 					buff.append(" 	selected ");  
 				}
-				buff.append(" > "+ i +"ÀÏ  </option>\n");
+				buff.append(" > "+ i +"ì¼  </option>\n");
 			}
 		}
 		return buff.toString();
 	}
   
   
-  	// Cookie¸¦ ¼³Á¤ ======================================
+  	// Cookieë¥¼ ì„¤ì • ======================================
 	public static void setCookie(HttpServletResponse response, String name, String value) {
     	value = java.net.URLEncoder.encode(value);
     	Cookie cookie = new Cookie(name, value);
@@ -266,7 +266,7 @@ public class Utility {
     	response.addCookie(cookie);
   	}
   
-  	// Cookie°ªÀ» ¾ò±â ====================================
+  	// Cookieê°’ì„ ì–»ê¸° ====================================
   	public static String getCookie(HttpServletRequest request, String cookieName) throws Exception {
     	Cookie [] cookies = request.getCookies();
     	if (cookies==null) return "";
@@ -280,20 +280,20 @@ public class Utility {
     	return value;
   	}
           
-  	// Session °ªÀ» Á¤ ====================================
+  	// Session ê°’ì„ ì • ====================================
   	public static void setSession(HttpServletRequest req, String name, String value) {
     	//value = java.net.URLEncoder.encode(value);
     	HttpSession session   = req.getSession(true);
     	session.setAttribute(name, value);
   	}
   
-  	// Session °ªÀ» ¾ò±â ==================================
+  	// Session ê°’ì„ ì–»ê¸° ==================================
   	public static String getSession(HttpServletRequest req, String name) {
 	    HttpSession session   = req.getSession(true);
 	    return (String)session.getAttribute(name);
  	}
   
- 	//Ã·ºÎ ÆÄÀÏ ¾ÆÀÌÄÜ ¼³Á¤ ==============================
+ 	//ì²¨ë¶€ íŒŒì¼ ì•„ì´ì½˜ ì„¤ì • ==============================
  	public static String file_ImgSel(String file_name) {
 	    if(file_name == null) {
     	  return "";  
@@ -346,7 +346,7 @@ public class Utility {
 		return str;
   	}
 
-	//³¯Â¥ºñ±³ Ã¼Å©(½ÃÀÛÀÏ,Á¾·áÀÏ,¿À´Ã³¯Â¥)================  
+	//ë‚ ì§œë¹„êµ ì²´í¬(ì‹œì‘ì¼,ì¢…ë£Œì¼,ì˜¤ëŠ˜ë‚ ì§œ)================  
   	public static String date_compare(String s_d,String f_d,String to_day){
 		String full_s_day=s_d.substring(0,4) + s_d.substring(4,6) + s_d.substring(6,8);
 		String full_e_day=f_d.substring(0,4) + f_d.substring(4,6) + f_d.substring(6,8);
@@ -358,17 +358,17 @@ public class Utility {
 	
 		String str = "";
 		if ((full_today>=full_sday) && (full_today<=full_eday))	{
-			return "ÁøÇà";
+			return "ì§„í–‰";
 		}else if(full_today>full_eday)	{
-			return "Á¾·á";
+			return "ì¢…ë£Œ";
 		}else if(full_today<full_eday)	{
-			return "¿¹Á¤";
+			return "ì˜ˆì •";
 		}else	{
 			return "";
 		}
 	}
 
-	//³Ñ°Ü¿Â µÎ°³ÀÇ µ¥ÀÌÅÍ¸¦ È®ÀÎÇÏ¿© width°ªÀ¸·Î µ¹·ÁÁÜ ==
+	//ë„˜ê²¨ì˜¨ ë‘ê°œì˜ ë°ì´í„°ë¥¼ í™•ì¸í•˜ì—¬ widthê°’ìœ¼ë¡œ ëŒë ¤ì¤Œ ==
 	public static int img_width_chk(int tot_val, int sub_val){
 		if(tot_val>0){
 			return Math.round(sub_val*100/tot_val);
