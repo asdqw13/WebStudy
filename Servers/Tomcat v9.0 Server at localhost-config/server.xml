@@ -147,13 +147,34 @@
         <!--
         <Valve className="org.apache.catalina.authenticator.SingleSignOn" />
         -->
-
+		
+		<!-- 
+			<Resource name="jdbc/myoracle" auth="Container"
+			driverClassName="oracle.jdbc.OracleDriver"
+			maxActive="20" maxIdle="10" maxWait="-1"
+			name="jdbc/myoracle" password="123456"
+			type="javax.sql.DataSource"
+			url="jdbc:oracle:thin:@127.0.0.1:1521:xe"
+			username="system"
+		-->
+		
         <!-- Access log processes all example.
              Documentation at: /docs/config/valve.html
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-      <Context docBase="Study2020_08_18" path="/Study2020_08_18" reloadable="true" source="org.eclipse.jst.jee.server:Study2020_08_18"/><Context docBase="Study2020_08_19" path="/Study2020_08_19" reloadable="true" source="org.eclipse.jst.jee.server:Study2020_08_19"/><Context docBase="Study2020_08_20" path="/Study2020_08_20" reloadable="true" source="org.eclipse.jst.jee.server:Study2020_08_20"/><Context docBase="Study2020_08_24" path="/Study2020_08_24" reloadable="true" source="org.eclipse.jst.jee.server:Study2020_08_24"/></Host>
+      <Context docBase="Study2020_08_24" path="/Study2020_08_24" reloadable="true" source="org.eclipse.jst.jee.server:Study2020_08_24"/>
+      
+      <Context docBase="Beans2020_08_27" path="/Beans2020_08_27" reloadable="true" source="org.eclipse.jst.jee.server:Beans2020_08_27">
+      <Resource auth="Container" driverClassName="oracle.jdbc.OracleDriver" maxActive="20" maxIdle="10" maxWait="-1" name="jdbc/myoracle" password="123456" type="javax.sql.DataSource" url="jdbc:oracle:thin:@127.0.0.1:1521:xe" username="system"/>
+      </Context>
+      
+      <Context docBase="2020_08_31 테스트(강민철)" path="/2020_08_31_테스트_강민철" reloadable="true" source="org.eclipse.jst.jee.server:2020_08_31 테스트(강민철)"/><Context docBase="Study2020_09_03" path="/Study2020_09_03" reloadable="true" source="org.eclipse.jst.jee.server:Study2020_09_03"/><Context docBase="Study2020_09_07" path="/Study2020_09_07" reloadable="true" source="org.eclipse.jst.jee.server:Study2020_09_07"/>
+      
+      <Context docBase="webjsp" path="/webjsp" reloadable="true" source="org.eclipse.jst.jee.server:webjsp">
+	  <Resource auth="Container" driverClassName="oracle.jdbc.OracleDriver" maxActive="20" maxIdle="10" maxWait="-1" name="jdbc/myoracle" password="123456" type="javax.sql.DataSource" url="jdbc:oracle:thin:@127.0.0.1:1521:xe" username="system" />
+      </Context>
+      </Host>
     </Engine>
   </Service>
 </Server>
